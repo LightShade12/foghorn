@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b2okaw6oex1rb"]
+
+[node name="world" type="Node3D"]
+
+[node name="lighting" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17842, 6.04114)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
+
+[node name="misc" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="misc"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd4bvhwaxbg6g"]
+
+[ext_resource type="Script" path="res://src/classes/character.gd" id="1_yc843"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_upaud"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2uu5f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kxdkj"]
+height = 0.890522
+
+[node name="character" type="CharacterBody3D"]
+script = ExtResource("1_yc843")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_upaud")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_2uu5f")
+
+[node name="footcollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578652, 0)
+shape = SubResource("CylinderShape3D_kxdkj")
+
+[node name="ground_check" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, -1.5, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]

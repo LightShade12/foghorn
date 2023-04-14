@@ -14,3 +14,4 @@ data_*/
 #custom
 build/
 raw/
+*.import

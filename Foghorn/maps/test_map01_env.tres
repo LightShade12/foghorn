@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://b1kt7qlktabok"]
+
+[ext_resource type="Texture2D" uid="uid://bhxnusunx7kk3" path="res://maps/hdri/test.hdr" id="1_cgj30"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vnig3"]
+panorama = ExtResource("1_cgj30")
+
+[sub_resource type="Sky" id="Sky_a3fys"]
+sky_material = SubResource("PanoramaSkyMaterial_vnig3")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_a3fys")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 0.3
+tonemap_white = 2.85
+sdfgi_enabled = true
+sdfgi_use_occlusion = true

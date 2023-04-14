@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cem57sxbhxot3"]
+
+[ext_resource type="PackedScene" uid="uid://b2okaw6oex1rb" path="res://src/classes/world.tscn" id="1_cdur8"]
+[ext_resource type="PackedScene" uid="uid://c8xo61yo8uyif" path="res://models/dummy170.glb" id="1_pqjhd"]
+[ext_resource type="PackedScene" uid="uid://bmgpw0k4cdbf8" path="res://src/scripts/ent/player/player.tscn" id="3_sousm"]
+[ext_resource type="Environment" uid="uid://b1kt7qlktabok" path="res://maps/test_map01_env.tres" id="4_gcv3y"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7ydro"]
+
+[node name="world" instance=ExtResource("1_cdur8")]
+
+[node name="geo" type="Node3D" parent="." index="0"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="geo" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.936, 0.519522, 2.60336)
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="geo" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0267283, 0)
+use_collision = true
+size = Vector3(50, 0.1, 50)
+
+[node name="props" type="Node3D" parent="." index="1"]
+
+[node name="dummy170" parent="props" index="0" instance=ExtResource("1_pqjhd")]
+
+[node name="game" type="Node3D" parent="." index="2"]
+
+[node name="player" parent="game" index="0" instance=ExtResource("3_sousm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10205, -1.58641)
+env_file = ExtResource("4_gcv3y")
+
+[node name="DirectionalLight3D" parent="lighting" index="0"]
+transform = Transform3D(0.7728, 0.378794, -0.509211, 4.65637e-10, 0.802349, 0.596855, 0.63465, -0.46125, 0.620055, 0, 3.17842, 6.04114)
+light_color = Color(1, 0.941176, 0.760784, 1)
+light_energy = 3.0
+light_angular_distance = 2.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" parent="lighting" index="1"]
+environment = ExtResource("4_gcv3y")
+camera_attributes = SubResource("CameraAttributesPractical_7ydro")
