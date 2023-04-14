@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://rwevsxii8o6c"]
+
+[ext_resource type="Script" path="res://scenes/mainscreen_logic.gd" id="1_amdr8"]
+[ext_resource type="Texture2D" uid="uid://dlefjd3rr7fkw" path="res://material/vgui/ui/placeholder_splash.png" id="1_onetg"]
+[ext_resource type="FontFile" uid="uid://dif0dnivql3s" path="res://resources/ui/fonts/Neou-Bold.ttf" id="3_pnq5d"]
+
+[node name="mainscreen" type="Node2D"]
+script = ExtResource("1_amdr8")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="TextureRect" type="TextureRect" parent="Control/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_onetg")
+
+[node name="playButton" type="Button" parent="Control/CanvasLayer"]
+offset_left = 78.0
+offset_top = 648.0
+offset_right = 371.0
+offset_bottom = 719.0
+tooltip_text = "start the game"
+theme_override_fonts/font = ExtResource("3_pnq5d")
+theme_override_font_sizes/font_size = 29
+text = "start session"
+alignment = 0
+
+[node name="title" type="Label" parent="Control/CanvasLayer"]
+offset_left = 76.0
+offset_top = 479.0
+offset_right = 380.0
+offset_bottom = 567.0
+theme_override_font_sizes/font_size = 100
+text = "FOGHORN"
+
+[node name="quitButton" type="Button" parent="Control/CanvasLayer"]
+offset_left = 78.0
+offset_top = 745.0
+offset_right = 371.0
+offset_bottom = 820.0
+tooltip_text = "Exit the game"
+theme_override_fonts/font = ExtResource("3_pnq5d")
+theme_override_font_sizes/font_size = 29
+text = "Quit game
+"
+alignment = 0
+
+[node name="versioning" type="Label" parent="Control/CanvasLayer"]
+offset_left = 1762.0
+offset_top = 1018.0
+offset_right = 1846.0
+offset_bottom = 1044.0
+text = "alpha 1.0.0"
+
+[connection signal="pressed" from="Control/CanvasLayer/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/quitButton" to="." method="_on_quit_button_pressed"]

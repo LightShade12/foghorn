@@ -150,6 +150,3 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1105, 580)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("4_36ald")
-
-[node name="head" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
