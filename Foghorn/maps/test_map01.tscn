@@ -36,7 +36,7 @@ size = Vector3(50, 0.1, 50)
 
 [node name="player" parent="game" index="0" instance=ExtResource("3_sousm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0526206, -1.58641)
-env_file = ExtResource("4_gcv3y")
+camera_environment_file = null
 
 [node name="DirectionalLight3D" parent="lighting" index="0"]
 transform = Transform3D(0.7728, 0.378794, -0.509211, 4.65637e-10, 0.802349, 0.596855, 0.63465, -0.46125, 0.620055, 0, 3.17842, 6.04114)

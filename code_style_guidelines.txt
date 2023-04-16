@@ -1,0 +1,48 @@
+code guidelines to follow with GDscript for better dev experience:
+
+1)Use Static Typing for non-short term variables:
+
+avoid:
+	var jump_scale
+use:
+	var jump_scale: float;
+	
+	
+	
+2)Do not use abbreviations:
+
+avoid:
+	var h_accel_crnt
+use:
+	var horizontal_acceleration_current;
+	
+	
+	
+3)Obvious namings to imply type:
+
+avoid:
+	var jumping
+	var ground_check
+
+use:
+	var is_jumping:bool;
+	var b_ground check:bool; ("b_" is to imply boolean)
+	
+note: no need to use this for obvious variables e.g: jump_scale is a float, jump_vector is a vec3
+
+
+
+4)Use patterns for naming related variables
+
+avoid:
+	move_vector
+	bob_frequency_move
+	speed_move_horizontal
+	
+use:
+	move_vector
+	move_bob_frequency
+	move_speed_horizontal
+
+
+Thank you

@@ -1,24 +1,37 @@
 extends CharacterBody3D
 class_name character
 
-var h_accel=6
-var h_velocity=Vector3()
-var movement=Vector3()
-var mouse_sens=0.09
-var SPEED =5 #obsolete probably
-var default_crouch_speed=1.5;
-var default_move_speed=4;
-var default_sprint_speed=6;
-var jump=7.5
-var gravity_vec=Vector3()
-var full_contact: bool=false
-var normal_accel =6
-var air_accel= 1
-var hp:int=100;
+"""
+The character is a base class that "living things" should inherit from. Character currently isn't well implemented, but its intended to abstract away and house most commonly used functions, variables and classes. It will make creation of new entities in game faster and easier.-Subham
+"""
+#Class variables
+var mouse_sensitivity:float=0.09
 
-@onready var head=$head
-@onready var groundcheck: RayCast3D=$ground_check
+var health_points:int=100;
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-#var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var gravity=20
+var current_move_speed:float=0; #current speed
+
+var jump_velocity:float=7.5
+
+var default_acceleration:float =6
+var air_acceleration:float= 1
+var horizontal_acceleration:float=6
+
+var horizontal_velocity:Vector3=Vector3()
+
+var crouch_move_speed:float=2;
+var walk_move_speed:float=4;
+var sprint_move_speed:float=6;
+
+var crouch_bob_frequency:float=2;
+var walk_bob_frequency:float=2.5;
+var sprint_bob_frequency:float=4;
+
+var gravity_vector:Vector3=Vector3()
+var gravity_scale:float=20
+
+var b_full_contact: bool=false
+
+@onready var node_head:Node3D=$head
+@onready var node_groundcheck: RayCast3D=$ground_check
+

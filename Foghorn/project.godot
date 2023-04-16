@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="Foghorn"
-run/main_scene="res://scenes/mainscreen.tscn"
+run/main_scene="res://maps/test_map01.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1000
-window/size/viewport_height=560
+window/size/viewport_width=2000
+window/size/viewport_height=1120
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]
@@ -56,5 +57,10 @@ press_quit={
 press_crouch={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":128,"position":Vector2(406, 16),"global_position":Vector2(410, 59),"factor":1.0,"button_index":8,"pressed":true,"double_click":false,"script":null)
+]
+}
+press_sprint={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194328,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
