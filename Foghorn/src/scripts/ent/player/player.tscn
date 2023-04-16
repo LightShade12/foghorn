@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d2t224f8uoajw" path="res://material/vgui/hud/crosshair.png" id="4_36ald"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_qyasd"]
+radius = 0.4
+height = 1.7
 
 [sub_resource type="Theme" id="Theme_icfpr"]
 default_font = ExtResource("3_i6xed")

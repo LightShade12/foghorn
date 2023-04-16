@@ -15,7 +15,15 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.936, 0.519522, 2.60336)
 use_collision = true
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="geo" index="1"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="geo" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54386, 1.70388, 2.60336)
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="geo" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1.71852, 0, 0, 0, 1, -5.48252, 0.63308, 2.60336)
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="geo" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0267283, 0)
 use_collision = true
 size = Vector3(50, 0.1, 50)
@@ -27,7 +35,7 @@ size = Vector3(50, 0.1, 50)
 [node name="game" type="Node3D" parent="." index="2"]
 
 [node name="player" parent="game" index="0" instance=ExtResource("3_sousm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10205, -1.58641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0526206, -1.58641)
 env_file = ExtResource("4_gcv3y")
 
 [node name="DirectionalLight3D" parent="lighting" index="0"]

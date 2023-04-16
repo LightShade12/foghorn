@@ -15,6 +15,8 @@ offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control"]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="Control/CanvasLayer"]
+
 [node name="TextureRect" type="TextureRect" parent="Control/CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +30,7 @@ offset_left = 78.0
 offset_top = 648.0
 offset_right = 371.0
 offset_bottom = 719.0
-tooltip_text = "start the game"
+tooltip_text = "lock and load"
 theme_override_fonts/font = ExtResource("3_pnq5d")
 theme_override_font_sizes/font_size = 29
 text = "start session"
@@ -37,21 +39,22 @@ alignment = 0
 [node name="title" type="Label" parent="Control/CanvasLayer"]
 offset_left = 76.0
 offset_top = 479.0
-offset_right = 380.0
-offset_bottom = 567.0
+offset_right = 399.0
+offset_bottom = 596.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("3_pnq5d")
 theme_override_font_sizes/font_size = 100
 text = "FOGHORN"
 
 [node name="quitButton" type="Button" parent="Control/CanvasLayer"]
 offset_left = 78.0
-offset_top = 745.0
+offset_top = 806.0
 offset_right = 371.0
-offset_bottom = 820.0
+offset_bottom = 881.0
 tooltip_text = "Exit the game"
 theme_override_fonts/font = ExtResource("3_pnq5d")
 theme_override_font_sizes/font_size = 29
-text = "Quit game
-"
+text = "exit"
 alignment = 0
 
 [node name="versioning" type="Label" parent="Control/CanvasLayer"]
@@ -60,6 +63,17 @@ offset_top = 1018.0
 offset_right = 1846.0
 offset_bottom = 1044.0
 text = "alpha 1.0.0"
+
+[node name="optionsbutton" type="Button" parent="Control/CanvasLayer"]
+offset_left = 84.0
+offset_top = 731.0
+offset_right = 370.0
+offset_bottom = 795.0
+tooltip_text = "change settings/preferences/keymaps"
+theme_override_fonts/font = ExtResource("3_pnq5d")
+theme_override_font_sizes/font_size = 29
+text = "options"
+alignment = 0
 
 [connection signal="pressed" from="Control/CanvasLayer/playButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Control/CanvasLayer/quitButton" to="." method="_on_quit_button_pressed"]
