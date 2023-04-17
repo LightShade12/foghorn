@@ -57,13 +57,6 @@ theme_override_font_sizes/font_size = 29
 text = "exit"
 alignment = 0
 
-[node name="versioning" type="Label" parent="Control/CanvasLayer"]
-offset_left = 1762.0
-offset_top = 1018.0
-offset_right = 1846.0
-offset_bottom = 1044.0
-text = "alpha 1.0.0"
-
 [node name="optionsbutton" type="Button" parent="Control/CanvasLayer"]
 offset_left = 84.0
 offset_top = 731.0
@@ -75,5 +68,13 @@ theme_override_font_sizes/font_size = 29
 text = "options"
 alignment = 0
 
+[node name="versioning" type="Label" parent="Control/CanvasLayer"]
+offset_left = 1762.0
+offset_top = 1018.0
+offset_right = 1846.0
+offset_bottom = 1044.0
+text = "alpha 1.0.0"
+
 [connection signal="pressed" from="Control/CanvasLayer/playButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Control/CanvasLayer/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/optionsbutton" to="." method="_on_optionsbutton_pressed"]

@@ -1,32 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://cem57sxbhxot3"]
+[gd_scene load_steps=12 format=3 uid="uid://cem57sxbhxot3"]
 
 [ext_resource type="PackedScene" uid="uid://b2okaw6oex1rb" path="res://src/classes/world.tscn" id="1_cdur8"]
 [ext_resource type="PackedScene" uid="uid://c8xo61yo8uyif" path="res://models/dummy170.glb" id="1_pqjhd"]
+[ext_resource type="Shader" uid="uid://dpdybs3o5aey5" path="res://material/maps/dev/dev_floor_mat.tres" id="2_a8kk2"]
+[ext_resource type="Shader" uid="uid://dulf1h5ui8ets" path="res://material/maps/dev/dev_prop_mat.tres" id="2_grwim"]
 [ext_resource type="PackedScene" uid="uid://bmgpw0k4cdbf8" path="res://src/scripts/ent/player/player.tscn" id="3_sousm"]
 [ext_resource type="Environment" uid="uid://b1kt7qlktabok" path="res://maps/test_map01_env.tres" id="4_gcv3y"]
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7ydro"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7bwf"]
+render_priority = 0
+shader = ExtResource("2_grwim")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gb5l4"]
+render_priority = 0
+shader = ExtResource("2_grwim")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fu5g5"]
+render_priority = 0
+shader = ExtResource("2_grwim")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkb34"]
+render_priority = 0
+shader = ExtResource("2_a8kk2")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_7r604"]
+auto_exposure_speed = 3.0
+auto_exposure_max_exposure_value = 2.7
 
 [node name="world" instance=ExtResource("1_cdur8")]
 
 [node name="geo" type="Node3D" parent="." index="0"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="geo" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.936, 0.519522, 2.60336)
+transform = Transform3D(1, 0, 0, 0, 0.733982, 0, 0, 0, 0.848652, -2.06922, 0.39193, 2.57754)
 use_collision = true
+size = Vector3(1, 1, 1.18295)
+material = SubResource("ShaderMaterial_x7bwf")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="geo" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54386, 1.70388, 2.60336)
 use_collision = true
+material = SubResource("ShaderMaterial_gb5l4")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="geo" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1.71852, 0, 0, 0, 1, -5.48252, 0.63308, 2.60336)
+transform = Transform3D(1, 0, 0, 0, 1.12576, 0, 0, 0, 1, -5.48252, 0.574734, 2.60336)
 use_collision = true
+material = SubResource("ShaderMaterial_fu5g5")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="geo" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0267283, 0)
 use_collision = true
 size = Vector3(50, 0.1, 50)
+material = SubResource("ShaderMaterial_qkb34")
 
 [node name="props" type="Node3D" parent="." index="1"]
 
@@ -36,15 +61,13 @@ size = Vector3(50, 0.1, 50)
 
 [node name="player" parent="game" index="0" instance=ExtResource("3_sousm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0526206, -1.58641)
-camera_environment_file = null
 
 [node name="DirectionalLight3D" parent="lighting" index="0"]
-transform = Transform3D(0.7728, 0.378794, -0.509211, 4.65637e-10, 0.802349, 0.596855, 0.63465, -0.46125, 0.620055, 0, 3.17842, 6.04114)
+transform = Transform3D(0.806961, 0.352134, -0.474149, 0, 0.802818, 0.596225, 0.590606, -0.48113, 0.647842, 0, 3.17842, 6.04114)
 light_color = Color(1, 0.941176, 0.760784, 1)
-light_energy = 3.0
 light_angular_distance = 2.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" parent="lighting" index="1"]
 environment = ExtResource("4_gcv3y")
-camera_attributes = SubResource("CameraAttributesPractical_7ydro")
+camera_attributes = SubResource("CameraAttributesPhysical_7r604")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmgpw0k4cdbf8"]
+[gd_scene load_steps=15 format=3 uid="uid://bmgpw0k4cdbf8"]
 
 [ext_resource type="PackedScene" uid="uid://dd4bvhwaxbg6g" path="res://src/classes/character.tscn" id="1_r5gpn"]
 [ext_resource type="Script" path="res://src/scripts/ent/player/player.gd" id="2_iuts4"]
@@ -32,23 +32,64 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6xycu"]
 resource_name = "camera_bob"
+length = 2.0
+loop_mode = 1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("head:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.50024, 0), Vector3(0, 1.55, 0), Vector3(0, 1.5, 0)]
+"values": [Vector3(0, 1.50024, 0), Vector3(-0.05, 1.55, 0), Vector3(-0.1, 1.5, 0), Vector3(-0.05, 1.55, 0), Vector3(0, 1.5, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cvl7e"]
 _data = {
 "RESET": SubResource("Animation_epusa"),
 "camera_bob": SubResource("Animation_6xycu")
+}
+
+[sub_resource type="Animation" id="Animation_2flwe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7q5f6"]
+resource_name = "cam_rot"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/Camera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.00698132), Vector3(0, 0, 0), Vector3(0, 0, 0.00698132), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4sb3"]
+_data = {
+"RESET": SubResource("Animation_2flwe"),
+"cam_rot": SubResource("Animation_7q5f6")
 }
 
 [node name="player" instance=ExtResource("1_r5gpn")]
@@ -59,19 +100,19 @@ camera_environment_file = null
 visible = false
 mesh = SubResource("CapsuleMesh_qyasd")
 
-[node name="Control" type="Control" parent="." index="5"]
+[node name="VGUI" type="Control" parent="." index="5"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HUD" type="CanvasLayer" parent="Control" index="0"]
+[node name="HUD" type="CanvasLayer" parent="VGUI" index="0"]
 offset = Vector2(15, 75)
 scale = Vector2(0.865, 0.865)
 transform = Transform2D(0.865, 0, 0, 0.865, 15, 75)
 follow_viewport_enabled = true
 
-[node name="canvastex" type="ColorRect" parent="Control/HUD" index="0"]
+[node name="canvastex" type="ColorRect" parent="VGUI/HUD" index="0"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -83,7 +124,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="healthind" type="Control" parent="Control/HUD" index="1"]
+[node name="healthind" type="Control" parent="VGUI/HUD" index="1"]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 222.0
@@ -91,7 +132,7 @@ offset_right = 40.0
 offset_bottom = 262.0
 scale = Vector2(0.8, 0.8)
 
-[node name="healthbg" type="Panel" parent="Control/HUD/healthind" index="0"]
+[node name="healthbg" type="Panel" parent="VGUI/HUD/healthind" index="0"]
 self_modulate = Color(1, 1, 1, 0.411765)
 layout_mode = 0
 offset_left = 16.4046
@@ -100,7 +141,7 @@ offset_right = 56.4046
 offset_bottom = 1059.34
 scale = Vector2(3.835, 3.063)
 
-[node name="healthlabel" type="RichTextLabel" parent="Control/HUD/healthind" index="1"]
+[node name="healthlabel" type="RichTextLabel" parent="VGUI/HUD/healthind" index="1"]
 layout_mode = 0
 offset_left = 31.8093
 offset_top = 1021.97
@@ -111,7 +152,7 @@ theme_override_font_sizes/normal_font_size = 13
 text = "HEALTH
 "
 
-[node name="healthpoint" type="RichTextLabel" parent="Control/HUD/healthind" index="2"]
+[node name="healthpoint" type="RichTextLabel" parent="VGUI/HUD/healthind" index="2"]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 1038.0
@@ -122,7 +163,7 @@ theme = SubResource("Theme_icfpr")
 theme_override_font_sizes/normal_font_size = 50
 text = "100"
 
-[node name="suitind" type="Control" parent="Control/HUD" index="2"]
+[node name="suitind" type="Control" parent="VGUI/HUD" index="2"]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 221.965
@@ -130,7 +171,7 @@ offset_right = 40.0
 offset_bottom = 261.965
 scale = Vector2(0.8, 0.8)
 
-[node name="suitbg" type="Panel" parent="Control/HUD/suitind" index="0"]
+[node name="suitbg" type="Panel" parent="VGUI/HUD/suitind" index="0"]
 self_modulate = Color(1, 1, 1, 0.411765)
 layout_mode = 0
 offset_left = 183.549
@@ -139,7 +180,7 @@ offset_right = 223.549
 offset_bottom = 1059.65
 scale = Vector2(3.835, 3.063)
 
-[node name="suitpoint" type="RichTextLabel" parent="Control/HUD/suitind" index="1"]
+[node name="suitpoint" type="RichTextLabel" parent="VGUI/HUD/suitind" index="1"]
 layout_mode = 0
 offset_left = 188.659
 offset_top = 1037.22
@@ -150,7 +191,7 @@ theme = SubResource("Theme_icfpr")
 theme_override_font_sizes/normal_font_size = 50
 text = "100"
 
-[node name="suitlabel2" type="RichTextLabel" parent="Control/HUD/suitind" index="2"]
+[node name="suitlabel2" type="RichTextLabel" parent="VGUI/HUD/suitind" index="2"]
 layout_mode = 0
 offset_left = 194.283
 offset_top = 1023.36
@@ -162,7 +203,7 @@ theme_override_font_sizes/normal_font_size = 13
 text = "SUIT
 "
 
-[node name="TextureRect" type="TextureRect" parent="Control/HUD" index="3"]
+[node name="TextureRect" type="TextureRect" parent="VGUI/HUD" index="3"]
 offset_left = 284.393
 offset_top = 1042.77
 offset_right = 329.393
@@ -170,7 +211,7 @@ offset_bottom = 1087.77
 scale = Vector2(2, 2)
 texture = ExtResource("3_myvud")
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/HUD" index="4"]
+[node name="ProgressBar" type="ProgressBar" parent="VGUI/HUD" index="4"]
 anchors_preset = -1
 anchor_left = 0.000228805
 anchor_top = -0.000235324
@@ -184,17 +225,31 @@ scale = Vector2(1.85, 1.85)
 value = 50.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Crosshair" type="Sprite2D" parent="Control/HUD" index="5"]
-position = Vector2(1105, 580)
+[node name="Crosshair" type="Sprite2D" parent="VGUI/HUD" index="5"]
+position = Vector2(1140, 560)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("4_36ald")
 
 [node name="Camera3D" parent="head" index="0"]
 current = true
-fov = 90.0
+fov = 37.8493
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="armsocket" type="Node3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0154, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="armsocket" index="0"]
+
+[node name="animationplayers" type="Node3D" parent="." index="8"]
+
+[node name="cambobAnimationPlayer" type="AnimationPlayer" parent="animationplayers" index="0"]
+root_node = NodePath("../..")
 speed_scale = 2.5
 libraries = {
 "": SubResource("AnimationLibrary_cvl7e")
+}
+
+[node name="camrotAnimationPlayer" type="AnimationPlayer" parent="animationplayers" index="1"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_l4sb3")
 }

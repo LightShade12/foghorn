@@ -1,9 +1,9 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://b1kt7qlktabok"]
 
-[ext_resource type="Texture2D" uid="uid://bhxnusunx7kk3" path="res://maps/hdri/test.hdr" id="1_cgj30"]
+[ext_resource type="Texture2D" uid="uid://bhxnusunx7kk3" path="res://maps/hdri/test.hdr" id="1_wse2i"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vnig3"]
-panorama = ExtResource("1_cgj30")
+panorama = ExtResource("1_wse2i")
 
 [sub_resource type="Sky" id="Sky_a3fys"]
 sky_material = SubResource("PanoramaSkyMaterial_vnig3")
@@ -16,5 +16,9 @@ reflected_light_source = 2
 tonemap_mode = 3
 tonemap_exposure = 0.3
 tonemap_white = 2.85
+ssao_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
+glow_intensity = 8.0
+glow_hdr_threshold = 1.48
+volumetric_fog_sky_affect = 0.102

@@ -12,6 +12,10 @@ data_*/
 .godot/
 
 #custom
+#folders
+.vscode/
 build/
 raw/
+
+#files:
 *.import

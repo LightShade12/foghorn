@@ -44,5 +44,26 @@ use:
 	move_bob_frequency
 	move_speed_horizontal
 
+5)Report bugs on top of script files
+
+use:
+
+	"""
+	BUGS:
+	1.xyz (line no here if required)
+	2.blah blah blah
+	3.whatevs
+	"""
+	
+(To be written at the top of gdscript file)
+
+6)Use const for variables that shouldn't be modified in runtime AND use const only if working with a final subclass(non inheritable):
+
+avoid:
+	var current_speed;
+	var standing_height= 20
+use:
+	var current_speed;
+	const standing_height= 20
 
 Thank you
