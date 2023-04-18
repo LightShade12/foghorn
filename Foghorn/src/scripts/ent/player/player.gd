@@ -3,7 +3,9 @@ BUGS:
 1.Pressing move forward and move left i.e any diagonal movement causes movement vector to gain cumulative length and thus player moves faster than normal while using diagonal movements
 2.Player can press jump twice rapidly to make mid air jump(double jump); this is unintended and undesirable
 3.Bad collision when falling near ledges;contact surface;causes sudden snappy fall
-4.camera tils only when you press left/right first, if you move forward and press left/right, no tilt takes effect. Printing value after applying rotate_z method on fpscam reveals taht the values are being manipulated by some external process(values are being negated)(Is this a Godot bug?)
+4.camera tilts only when you press left/right first, if you move forward and press left/right, no tilt takes effect. Printing value after applying rotate_z method on fpscam reveals that the values are being manipulated by some external process
+(values are being negated)(Is this a Godot bug?)
+this camera tilt bug happens even when you started movement with left/right; after you land from a jump/fall from ledge tilts gets disabled again
 5.sprint_bob_frequency is only applied if you hold sprint before starting movement, sprinting midway of walking doesn't update the current_bob_frequency to sprint_bob_frequency. But when you jump midway walk with sprint pressed, upon landing sprint is applied(Is this a Godot bug?)
 6.Abrupt snap of bobbing camera to default camera position when movement stops; this is partially implementation fault but it could be corrected with a conditional that will continue playing the animation and only allow stopping when th etrackhead is in beginning of th eanimation, i.e starting camera position for all animations
 """
