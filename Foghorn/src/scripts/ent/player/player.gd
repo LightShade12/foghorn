@@ -5,6 +5,7 @@ BUGS:
 3.Bad collision when falling near ledges;contact surface;causes sudden snappy fall
 4.camera tils only when you press left/right first, if you move forward and press left/right, no tilt takes effect. Printing value after applying rotate_z method on fpscam reveals taht the values are being manipulated by some external process(values are being negated)(Is this a Godot bug?)
 5.sprint_bob_frequency is only applied if you hold sprint before starting movement, sprinting midway of walking doesn't update the current_bob_frequency to sprint_bob_frequency. But when you jump midway walk with sprint pressed, upon landing sprint is applied(Is this a Godot bug?)
+6.Abrupt snap of bobbing camera to default camera position when movement stops; this is partially implementation fault but it could be corrected with a conditional that will continue playing the animation and only allow stopping when th etrackhead is in beginning of th eanimation, i.e starting camera position for all animations
 """
 
 extends character
@@ -42,7 +43,7 @@ func _input(event):
 
 
 func _process(_delta: float) -> void:
-	print(Engine.get_frames_per_second())
+#	print(Engine.get_frames_per_second())
 	current_move_speed=walk_move_speed
 	current_bob_frequency=walk_bob_frequency
 	is_sprinting=false

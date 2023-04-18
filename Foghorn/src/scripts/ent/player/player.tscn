@@ -113,23 +113,23 @@ transform = Transform2D(0.865, 0, 0, 0.865, 15, 75)
 follow_viewport_enabled = true
 
 [node name="canvastex" type="ColorRect" parent="VGUI/HUD" index="0"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -17.0
+offset_left = -15.8439
 offset_top = -87.0
-offset_right = 282.0
+offset_right = 283.156
 offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
 
 [node name="healthind" type="Control" parent="VGUI/HUD" index="1"]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 222.0
+offset_top = 263.619
 offset_right = 40.0
-offset_bottom = 262.0
+offset_bottom = 303.619
 scale = Vector2(0.8, 0.8)
 
 [node name="healthbg" type="Panel" parent="VGUI/HUD/healthind" index="0"]
@@ -166,9 +166,9 @@ text = "100"
 [node name="suitind" type="Control" parent="VGUI/HUD" index="2"]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 221.965
+offset_top = 263.584
 offset_right = 40.0
-offset_bottom = 261.965
+offset_bottom = 303.584
 scale = Vector2(0.8, 0.8)
 
 [node name="suitbg" type="Panel" parent="VGUI/HUD/suitind" index="0"]
@@ -205,22 +205,23 @@ text = "SUIT
 
 [node name="TextureRect" type="TextureRect" parent="VGUI/HUD" index="3"]
 offset_left = 284.393
-offset_top = 1042.77
+offset_top = 1084.39
 offset_right = 329.393
-offset_bottom = 1087.77
+offset_bottom = 1129.39
 scale = Vector2(2, 2)
 texture = ExtResource("3_myvud")
 
 [node name="ProgressBar" type="ProgressBar" parent="VGUI/HUD" index="4"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.000228805
 anchor_top = -0.000235324
 anchor_right = 0.0991871
 anchor_bottom = -0.000235324
 offset_left = 11.5607
-offset_top = 972.254
+offset_top = 1013.87
 offset_right = 15.5607
-offset_bottom = 999.254
+offset_bottom = 1040.87
 scale = Vector2(1.85, 1.85)
 value = 50.0
 metadata/_edit_use_anchors_ = true

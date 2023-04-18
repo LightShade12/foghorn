@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	lerfv+=1*delta
+	lerfv+=delta
 	pass
 
 
@@ -18,9 +18,9 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	$Control/CanvasLayer/CanvasModulate.color[3]=lerpf(1,0,lerfv)
+#	$Control/CanvasLayer/CanvasModulate.color=lerp(Color(0, 0, 0, 1), Color(1, 1, 1, 1),2)
 
-#	get_tree().change_scene_to_file("res://maps/test_map01.tscn")
+	get_tree().change_scene_to_file("res://maps/test_map01.tscn")
 	pass # Replace with function body.
 
 
