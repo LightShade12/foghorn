@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://dpdybs3o5aey5"]
 
-[ext_resource type="Texture2D" uid="uid://17ox5o426ppn" path="res://material/maps/dev/uv_lines.jpeg" id="1_ysdjp"]
+[ext_resource type="Texture2D" uid="uid://bp1y4bm80ixob" path="res://material/maps/dev/uv_lines.jpeg" id="1_ysdjp"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_1jtfj"]
 texture = ExtResource("1_ysdjp")
