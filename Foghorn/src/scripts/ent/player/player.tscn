@@ -244,6 +244,7 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157375, 0)
 light_energy = 10.0
 shadow_enabled = true
+spot_angle = 40.0
 
 [node name="armsocket" type="Node3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0154, 0)

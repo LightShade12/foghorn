@@ -13,25 +13,25 @@ this camera tilt bug happens even when you started movement with left/right; aft
 extends character
 class_name player
 
-@onready var audioplayer:AudioStreamPlayer3D=$AudioStreamPlayer3D;
-@onready var footsteptimer:Timer=$AudioStreamPlayer3D/Timer
-@onready var node_fps_camera=$head/Camera3D
-@onready var node_player_collision=$CollisionShape3D
-@onready var node_player_collision_foot=$footcollision
-@onready var node_animationplayer_cambob=$animationplayers/cambobAnimationPlayer#for camera bobbing
-@onready var node_animationplayer_camrot=$animationplayers/camrotAnimationPlayer#for camera rotation
-@export var camera_environment_file: Environment;
+@onready var node_audioplayer:AudioStreamPlayer3D=$AudioStreamPlayer3D;
+@onready var node_footsteptimer:Timer=$AudioStreamPlayer3D/Timer
+@onready var node_fps_camera:Camera3D=$head/Camera3D
+@onready var node_player_collision:CollisionShape3D=$CollisionShape3D
+@onready var node_player_collision_foot:CollisionShape3D=$footcollision
+@onready var node_animationplayer_cambob:AnimationPlayer=$animationplayers/cambobAnimationPlayer#for camera bobbing
+@onready var node_animationplayer_camrot:AnimationPlayer=$animationplayers/camrotAnimationPlayer#for camera rotation
 @onready var node_flashlight:SpotLight3D=$head/flashlight3d
+@export var camera_environment_file: Environment;
 
-var movement_vector=Vector3()
+var movement_vector:Vector3=Vector3()
 var is_sprinting:bool=false
-const crouching_speed:float=20
-const standing_height_metres:float=1.7
+const crouching_speed=20
+const standing_height_metres=1.7
 const crouch_height_metres=0.85
-var footsteptimer_interval_walk=0.3;
-var footsteptimer_interval_sprint=0.2;
+var footstep_interval_secs_walk=0.3;#used for footstep timer play sound
+var footstep_interval_secs_sprint=0.2;
 var is_moving:bool=0;
-var flashlight_on:bool=0;
+var is_flashlight_on:bool=0;
 
 const camera_tilt_recover_speed = 0.4  #The speed which the camera will rotate back
 var camera_tilt_scale=0.04;
@@ -54,17 +54,21 @@ func _input(event):
 func _process(_delta: float) -> void:
 #	print(Engine.get_frames_per_second())
 	
+	#flashlight input
 	if Input.is_action_just_pressed("flashlight"):
-		audioplayer.stream=load("res://sounds/player/hud/flashlight1.wav")
-		audioplayer.play()
-		if(!flashlight_on):
-			flashlight_on=true;
+		node_audioplayer.pitch_scale=1;
+		node_audioplayer.stream=load("res://sounds/player/hud/flashlight1.wav")
+		node_audioplayer.play()
+		if(!is_flashlight_on):
+			is_flashlight_on=true;
 		else:
-			flashlight_on=false;
-	if flashlight_on:
+			is_flashlight_on=false;
+	if is_flashlight_on:
 		node_flashlight.show()
 	else:
 		node_flashlight.hide()
+	
+	
 	current_move_speed=walk_move_speed
 	current_bob_frequency=walk_bob_frequency
 	is_sprinting=false
@@ -135,12 +139,13 @@ func _physics_process(delta: float) -> void:
 	if not Input.is_action_pressed("move_right"):
 		if node_fps_camera.rotation.z < 0:
 			node_fps_camera.rotate_z(deg_to_rad(camera_tilt_recover_speed * 0.5))
-
-	if velocity!=Vector3.ZERO and (Input.is_action_pressed("move_front")or Input.is_action_pressed("move_back") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
-		is_moving=true
-
+	
 	node_fps_camera.rotation.z = clamp(node_fps_camera.rotation.z , -camera_tilt_scale, camera_tilt_scale)  #Changing the thresholds will change how far the camera will rotate in either movement_vectorection
 
+	#check moving
+	if velocity!=Vector3.ZERO and (Input.is_action_pressed("move_front")or Input.is_action_pressed("move_back") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
+		is_moving=true
+	
 	#sprint handling
 	if(is_sprinting):
 		current_move_speed=sprint_move_speed
@@ -150,15 +155,15 @@ func _physics_process(delta: float) -> void:
 		get_tree().create_tween().tween_property(node_fps_camera,"fov",90,1.5)
 
 #footstep sound player
-	if footsteptimer.time_left<=0 and is_on_floor() and is_moving:
-		audioplayer.stream=load("res://sounds/player/footsteps/concrete"+str(randi_range(1,4))+".wav");
-		audioplayer.pitch_scale=randf_range(0.8,1.2)
-		audioplayer.play()
+	if node_footsteptimer.time_left<=0 and is_on_floor() and is_moving:
+		node_audioplayer.stream=load("res://sounds/player/footsteps/concrete"+str(randi_range(1,4))+".wav");
+		node_audioplayer.pitch_scale=randf_range(0.8,1.2)
+		node_audioplayer.play()
 #			print("played footsound")
 		if (is_sprinting):
-			footsteptimer.start(footsteptimer_interval_sprint)
+			node_footsteptimer.start(footstep_interval_secs_sprint)
 		else:
-			footsteptimer.start(footsteptimer_interval_walk)
+			node_footsteptimer.start(footstep_interval_secs_walk)
 
 
 	#camera bobbing mechanic
