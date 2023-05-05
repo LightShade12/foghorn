@@ -16,6 +16,7 @@ data_*/
 .vscode/
 build/
 raw/
+tools/
 
 #files:
 *.import
