@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dd4bvhwaxbg6g" path="res://src/classes/character.tscn" id="1_r5gpn"]
 [ext_resource type="Script" path="res://src/scripts/ent/player/player.gd" id="2_iuts4"]
-[ext_resource type="FontFile" uid="uid://dd3s1hg3smahl" path="res://resources/ui/fonts/halflife2.ttf" id="3_i6xed"]
-[ext_resource type="Texture2D" uid="uid://bmyg1e7wnmct0" path="res://material/vgui/hud/devtex32x32.jpg" id="3_myvud"]
-[ext_resource type="Texture2D" uid="uid://d2t224f8uoajw" path="res://material/vgui/hud/crosshair.png" id="4_36ald"]
+[ext_resource type="FontFile" uid="uid://wrcvy1yehev2" path="res://resources/ui/fonts/halflife2.ttf" id="3_i6xed"]
+[ext_resource type="Texture2D" uid="uid://qsu1bweakdp0" path="res://material/vgui/hud/devtex32x32.jpg" id="3_myvud"]
+[ext_resource type="Texture2D" uid="uid://c4lbj1440jkun" path="res://material/vgui/hud/crosshair.png" id="4_36ald"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_qyasd"]
 radius = 0.4
@@ -99,6 +99,12 @@ camera_environment_file = null
 [node name="MeshInstance3D" parent="." index="0"]
 visible = false
 mesh = SubResource("CapsuleMesh_qyasd")
+
+[node name="AudioStreamPlayer3D" parent="." index="4"]
+volume_db = -28.0
+
+[node name="Timer" type="Timer" parent="AudioStreamPlayer3D" index="0"]
+one_shot = true
 
 [node name="VGUI" type="Control" parent="." index="5"]
 layout_mode = 3
@@ -233,6 +239,11 @@ texture = ExtResource("4_36ald")
 
 [node name="Camera3D" parent="head" index="0"]
 current = true
+
+[node name="flashlight3d" type="SpotLight3D" parent="head" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157375, 0)
+light_energy = 10.0
+shadow_enabled = true
 
 [node name="armsocket" type="Node3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0154, 0)
