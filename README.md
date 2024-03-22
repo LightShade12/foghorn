@@ -1,4 +1,7 @@
 # foghorn
+
+<h1>THE PROJECT IS ABANDONED. THE TEMPLATE AND CODE IS FREE FOR USE.</h1>
+
 A Horror-Survival FPS game made with Godot.
 Open-Source.
 
